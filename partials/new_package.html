@@ -1,0 +1,77 @@
+<div class="container rounded col-md-6 col-md-offset-3 custom-container">
+        <div class="panel panel-primary">
+            <div class="panel-heading"><strong>Στοιχεία αποστολής</strong></div>
+            <div class="panel-body ">
+                <form name="newPkgForm">
+                    <label class="control-label" for="dest_address">Διέυθυνση Αποστολής:</label>
+                    <input id="dest_address" type="text" class="form-control" name="msg" autocomplete="off"
+                           placeholder="πχ. Κορίνθου 211, Πατρα " ng-model="new_pkg.dest_address" ng-blur="search_closest_store()">
+
+                    </br>
+                    <label class="control-label" for="dest_store">Κατάστημα παράδοσης:</label>
+                    <select ng-disabled="closest_stores_flag"  class="form-control" id="dest_store" ng-model="new_pkg.dest_store" ng-change="get_pkg_estimation()" required>
+                        <option value="closest_stores" ng-selected='true' disabled style="display:none">    </option>
+                        <option ng-repeat="store in closest_stores" value="{{store.id}}">{{store.physical_address}}</option>
+                    </select>
+                    </br>
+                    <label for="methodRadio">Τρόπος αποστολής:</label>
+                    <div id="methodRadio">
+                        <label class="radio-inline">
+                            <input type="radio" ng-model="new_pkg.delivery_method" name="options" value="standard" ng-click="get_pkg_estimation()">Standard
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" ng-model="new_pkg.delivery_method" name="options" value="express" ng-click="get_pkg_estimation()">Express
+                        </label>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+        <div class="panel panel-info">
+            <div class="panel-heading"><strong>Εκτίμηση αποστολής</strong></div>
+            <div class="panel-body ">
+                <table class = "table table-condensed">
+                    <tr>
+                        <th>Κόστος</th>
+                        <th>Χρόνος Αποστολής </th>
+                    </tr>
+                    <tr class="active">
+                        <td>{{new_pkg.cost}} <strong> €</strong></td>
+                        <td>{{new_pkg.time}} </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <button ng-hide="disable_submit" type="button" class="btn btn-success btn-block" ng-click="submit_new_pkg()"> Δημιουργία Αποστολής
+            <i class="glyphicon glyphicon-ok-sign"></i>
+        </button>
+</div>
+
+<!--Submit modal-->
+<div id="submit_modal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Νέα αποστολή</h4>
+            </div>
+            <div id="pkg_info" class="modal-body">
+                <table class = "table table-condensed">
+                    <tr>
+                        <th>Tracking Number </th>
+                        <th>QR code </th>
+                    </tr>
+                    <tr>
+                        <td><strong>{{new_pkg.tracking_number}}</strong></td>
+                        <td><div id="new_pkg_qr"></div>  </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" ng-click="print_pkg_info()">Print <i class="glyphicon glyphicon-print"></i></button>
+            </div>
+        </div>
+    </div>
+</div>
+

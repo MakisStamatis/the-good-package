@@ -1,0 +1,46 @@
+<div id="myContainer" class="container custom-container">
+    <div  class="row">
+        <form class="form--inline">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="input-group">
+                    <span class="input-group-addon">Αναζήτηση καταστήματος</span>
+                    <input id="msg" type="text" class="form-control" name="msg" autocomplete="off"
+                           ng-focus="show_list()" placeholder="Πολη ή ΤΚ "
+                           ng-model="search_model" ng-keyup="search_form_autocomplete($event,search_model)">
+                    <div class="input-group-btn">
+                        <button id="myBtn" class="btn btn-default" type="submit"  ng-click="search_form_input()">
+                            <i class="glyphicon glyphicon-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </form>
+    </div>
+    <div id ="autoRow" class="row">
+        <div class="col-md-8 col-md-offset-2">
+                 <ul class="list-group" ng-model="hide_auto_complete" ng-hide="hide_auto_complete">
+                        <li id="myList" class="list-group-item list-group-item-action" ng-repeat="store in closest_stores"
+                            ng-click="fill_text_box(store)">{{store.physical_address}}</li>
+                 </ul>
+        </div>
+    </div>
+    </br>
+    <div class="row">
+        <ng-map id="network_gmap" class="col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1 col-xs-12" style="height:400px" zoom="6" center="[38.20149697,21.77284241]">
+            <custom-control id="memo" position="TOP_RIGHT" index="1">
+                <div class="well">
+                    <img src="/courier_web_app/images/custom_marker.png" width="30px" height="30px">
+                    <label><b>Transit Hubs </b></label>
+                    <input id="hubs_checkbox" type="checkbox" ng-click="hubs_markers_manager(0)" checked></input>
+                    <br>
+                    </br>
+                    <img src="/courier_web_app/images/red-dot.png" width="30px" height="30px">
+                    <label><b>Stores</b></label>
+                    <input align="right" id="stores_checkbox"
+                           type="checkbox" ng-click="stores_markers_manager(0)" checked>
+                </div>
+            </custom-control>
+        </ng-map>
+    </div>
+</div>

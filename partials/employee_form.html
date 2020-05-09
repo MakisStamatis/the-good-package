@@ -1,0 +1,72 @@
+<div class="custom-container">
+    <div class="well bs-component col-md-8 col-md-offset-2 ">
+        <form class="form-horizontal" name="myForm">
+            <legend>Στοιχεία υπαλλήλου</legend>
+            <fieldset>
+                <div class="form-group row">
+                    <label class="control-label col-md-3 col-md-offset-1" for="employee_firstname">Όνομα Εργαζομένου:</label>
+                    <div class="col-md-6 ">
+                        <input id="employee_firstname" type="text" class="form-control"  pattern="[A-Za-zΑ-Ωα-ω]+"
+                               ng-model="employee_form.firstname"
+                               name="firstname" required>
+                        <span ng-show="myForm.firstname.$error.pattern" style="color:red">Enter only lower or uppercase letters.</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-3 col-md-offset-1" for="lastname">Επίθετο:</label>
+                    <div class="col-md-6 ">
+                        <input type="text" class="form-control" id="lastname" pattern="[A-Za-zΑ-Ωα-ω]+"
+                                ng-model="employee_form.lastname"
+                                name="lastname" required>
+                        <span ng-show="myForm.lastname.$error.pattern" style="color:red">Enter only lower or uppercase letters.</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-3 col-md-offset-1" for="username">Username:</label>
+                    <div class="col-md-6 ">
+                        <input type="text" class="form-control" id="username" pattern="[a-z0-9_-]+"
+                                ng-model="employee_form.username"
+                                 name="username" required ng-keyup="valid_username($event,employee_form.username)">
+                        <span ng-show="myForm.username.$error.pattern" style="color:red">Enter only upper/lower case letters, digits, -,  _ </span>
+                        <span ng-show="invalidUsername" style="color:red">To username "{{employee_form.username}}" υπάρχει ήδη!</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-3 col-md-offset-1" for="password">Password:</label>
+                    <div class="col-md-6">
+                        <input type="password" class="form-control" id="password" pattern="[a-z0-9]+"
+                                ng-model="employee_form.password"
+                                name="password"
+                                required>
+                        <span ng-show="myForm.password.$error.pattern" style="color:red">Enter only upper/lower case letters, digits or symbols(_-!@.#$%*)</span>
+                    </div>
+                </div>
+                <div class="form-group" ng-show="storeField">
+                    <label class="control-label col-md-3 col-md-offset-1" for="transit_hub">Transit Hub:</label>
+                    <div class="col-md-6 ">
+                        <select  class="form-control" id="transit_hub" ng-model="employee_form.transit_hub" >
+                            <option ng-repeat="hub in hubs" value="{{hub.id}}">{{hub.area}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group" ng-show="hubField">
+                    <label class="control-label col-md-3 col-md-offset-1" for="store">Store:</label>
+                    <div class="col-md-6">
+                        <select  class="form-control" id="store" ng-model="employee_form.store" >
+                            <option ng-repeat="store in stores" value="{{store.id}}">{{store.physical_address}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-1 col-md-offset-8   ">
+                            <button type="submit" class="btn btn-success" ng-disabled="myForm.$invalid || invalidUsername " ng-click="submitEmployeeData()" >
+                                <span class="glyphicon glyphicon-saved"></span> Submit
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>

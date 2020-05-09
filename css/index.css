@@ -1,0 +1,262 @@
+html{
+    height: 100%;
+}
+
+body{
+        min-height: 100%;
+        font: 400 15px/1.8 Lato, sans-serif;
+        color: #777;
+        overflow-y:scroll;
+        position: relative;
+}
+
+.glyphicon{
+    font-size: 14px;
+}
+.glyphicon.small-gl{
+    font-size: 12px;
+}
+.container.rounded{
+    background-color: #ffffff;
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+}
+
+.no-js #loader { display: none;  }
+.js #loader { display: block; position: absolute; left: 100px; top: 0; }
+.se-pre-con {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background: url(../images/Preloader_6.gif) center no-repeat #fff;
+}
+input.loadinggif {
+    background: #ffffff url("../images/ajax-loader.gif") no-repeat right center;
+}
+
+
+
+.bg-1 {
+    background: #2d2d30;
+    color: #bdbdbd;
+}
+.bg-1 h3 {color: #fff;}
+.bg-1 p {font-style: italic;}
+
+.thumbnail {
+    padding: 0 0 15px 0;
+    border: none;
+    border-radius: 0;
+}
+.thumbnail p {
+    margin-top: 15px;
+    color: #555;
+}
+
+.person {
+    border: 10px solid transparent;
+    margin-bottom: 25px;
+    width: 80%;
+    height: 80%;
+    opacity: 0.7;
+}
+
+.container .text-center{
+    z-index: 1000 !important;
+}
+.video-background:before{
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    position: absolute;
+    content: "";
+    background-color: #000;
+    opacity: 0.39;
+    z-index: 6;
+}
+.video-background {
+    position: relative;
+    background: #222;
+    width:100%;
+    z-index:5;
+}
+#video-background{
+    background-size: cover;
+    transition: 1s opacity;
+}
+
+.overlay-desc {
+    background: rgba(0,0,0,0);
+    position: absolute;
+    top: 0; right: 0; bottom: 0; left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.overlay-desc > h1 {
+    color: #ffffff ;
+    font-size: 9vw;
+    text-align: center;
+}
+.overlay-desc > h2 {
+    color: #ffffff ;
+    font-size: 3vw;
+    text-align: center;
+}
+
+.navbar-default{
+    background:transparent;
+    border:none !important;
+}
+
+.collapse.in{
+    background-color:#222222 !important;
+}
+
+.custom-container{
+    padding-top: 80px;
+    padding-bottom: 30px;
+}
+
+.dropdown{
+    cursor:pointer;
+}
+
+.navbar-brand {
+    width: 220px;
+    background: url(../images/logo.png) center / contain no-repeat;
+}
+
+
+#preview {
+    width: 100%;
+    height: 400px;
+}
+
+.carousel-inner > .item > img {
+  width:1920px;
+  height:1080px;
+}
+
+#autoRow{
+    position: absolute;
+    z-index: 1;
+    right: 0;
+    left: 0;
+}
+#myContainer{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    z-index: 1;
+}
+#myList{
+    cursor:pointer;
+    background-color: white;
+}
+#myList:hover
+{
+    background-color: LightSlateGrey;
+}
+.clickable{
+    cursor:pointer;
+}
+.clickable:hover{
+    background-color: #fff4ff;
+}
+#footer{
+    background-color: #424558;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 35px;
+    text-align: center;
+    color: #CCC;
+}
+
+#footer p {
+    padding: 10.5px;
+    margin: 0px;
+    line-height: 100%;
+}
+
+@media (max-width: 1000px) {
+    .navbar-header {
+        float: none;
+    }
+    .navbar-left,.navbar-right {
+        float: none !important;
+    }
+    .navbar-toggle {
+        display: block;
+    }
+    .navbar-collapse {
+        border-top: 1px solid transparent;
+        box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
+    }
+    .navbar-fixed-top {
+        top: 0;
+        border-width: 0 0 1px;
+    }
+    .navbar-collapse.collapse {
+        display: none!important;
+    }
+    .navbar-nav {
+        float: none!important;
+        margin-top: 7.5px;
+    }
+    .navbar-nav>li {
+        float: none;
+    }
+    .navbar-nav>li>a {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    .collapse.in{
+        display:block !important;
+    }
+}
+
+@media (min-width: 1600px){
+    #scroll {
+        max-height:600px;
+        overflow-y:auto;
+        width: 100%;
+    }
+
+}
+
+@media (min-width: 1024px) and (max-width:1440px){
+    #scroll {
+        max-height:400px;
+        overflow-y:auto;
+        width: 100%;
+    }
+
+}
+
+@media (max-width: 650px){
+    footer{
+        height: 45px;
+    }
+
+}
+
+.stylish-input-group .input-group-addon{
+    background: white !important;
+}
+.stylish-input-group .form-control{
+    border-right:0;
+    box-shadow:0 0 0;
+    border-color:#ccc;
+}
+.stylish-input-group button{
+    border:0;
+    background:transparent;
+}

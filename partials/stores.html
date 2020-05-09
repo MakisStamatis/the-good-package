@@ -1,0 +1,45 @@
+<div class="container rounded col-md-10 col-md-offset-1 custom-container ">
+    <div class="row">
+            <div class="panel panel-primary">
+                <div class="panel-heading"><strong>Καταστήματα</strong></div>
+                <div class="panel-body" id="scroll">
+                    <table class="table table-hover" id="storesTable">
+                        <thead>
+                        <tr>
+                            <th ng-click="sortTable(0)" class="clickable">Περιοχή
+                            <i class="glyphicon glyphicon-sort"></i>
+                            </th>
+                            <th ng-click="sortTable(1)" class="clickable">Διέυθυνση
+                            <i class="glyphicon glyphicon-sort"></i>
+                            </th>
+                            <th>Τηλέφωνο</th>
+                            <th>Ενέργειες</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="store in stores">
+                                <td>{{store.city}}</td>
+                                <td>{{store.physical_address}}</td>
+                                <td>{{store.telephone}}</td>
+                                <td>
+                                    <button class="btn btn-info edit btn-xs" ng-click="editStore($index)">
+                                        <span class="glyphicon glyphicon-pencil small-gl"></span>
+                                    </button>
+                                    <button class="btn btn-danger delete btn-xs" ng-click="deleteStore($index,store)">
+                                        <span class="glyphicon glyphicon-trash small-gl"></span>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+    </div>
+    <div class="row col-md-6 col-md-offset-3">
+            <button type="button"  href="#/store_form" class="btn btn-success btn-block" ng-click="editStore(-1)">
+                Προσθήκη νέου καταστήματος
+                <i class="	glyphicon glyphicon-plus-sign"></i>
+            </button>
+    </div>
+</div>
+

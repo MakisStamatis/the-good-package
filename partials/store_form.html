@@ -1,0 +1,90 @@
+<div class="custom-container">
+    <div class="well bs-component col-md-8 col-md-offset-2">
+        <form class="form-horizontal" name="storesForm">
+            <legend>Στοιχεία καταστήματος</legend>
+            <fieldset>
+                <div class="form-group row">
+                    <label class="control-label col-md-3 col-md-offset-1 " for="store_name">Όνομα Καταστήματος:</label>
+                    <div class="col-md-5">
+                        <input id="store_name" type="text" class="form-control"  pattern="[A-Za-zΑ-Ωα-ω1-9]+" ng-model="store_form.name" name="name" required>
+                    </div>
+                </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-md-offset-1" for="street">Oδός:</label>
+                        <div class="col-md-4">
+                            <input type="text" class="form-control" id="street" ng-model="store_form.street"
+                                    name="street" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-md-offset-1 " for="st_number">Αριθμός:</label>
+                        <div class="col-md-2 ">
+                            <input type="text" class="form-control" id="st_number" pattern="[0-9]+"
+                                    ng-model="store_form.st_number"
+                                     name="st_number"
+                                   title="Street number can contain only digits." required>
+                            <span ng-show="storesForm.st_number.$error.pattern" style="color:red">Enter only digits.</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-md-offset-1" for="city">Πόλη:</label>
+                        <div class="col-md-4">
+                            <input type="text" class="form-control" id="city"
+                                    ng-model="store_form.city" name="city" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-md-offset-1" for="tk">TK:</label>
+                        <div class="col-md-2">
+                            <input type="text" class="form-control" id="tk" pattern="[0-9]+"
+                                    ng-model="store_form.tk"
+                                     name="tk"
+                                     title="TK can contain only digits." required>
+                            <span ng-show="storesForm.tk.$error.pattern" style="color:red">Enter only digits.</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-md-offset-1" for="telephone">Τηλέφωνο:</label>
+                        <div class="col-md-4">
+                            <input type="text" class="form-control" id="telephone" pattern="[0-9 ]+"
+                                    ng-model="store_form.telephone"
+                                    name="telephone"
+                                   title="Telephone can contain only digits." required>
+                            <span ng-show="storesForm.telephone.$error.pattern" style="color:red">Enter only digits.</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-md-offset-1" for="coordinates">Συντεταγμένες:</label>
+                        <div class="col-md-4">
+                            <input type="text" class="form-control" id="coordinates" pattern="^[-+]?([1-8]?\d(\.\d+)?|90(\.0+)?),\s*[-+]?(180(\.0+)?|((1[0-7]\d)|([1-9]?\d))(\.\d+)?)$"
+                                    ng-model="store_form.coordinates"
+                                   name="coordinates"  ng-focus="estimate_coordinates()" required>
+                            <span ng-show="storesForm.coordinates.$error.pattern" style="color:red">Invalid coordinates format. (e.g 38.20149697,21.77284241).</span>
+                            <span ng-show="coor_estimation" style="color:red">We could not find coordinates by address.</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-md-offset-1" for="transit_hub">Transit Hub:</label>
+                        <div class="col-md-3">
+                            <select  class="form-control" id="transit_hub" ng-model="store_form.transit_hub" required>
+                                <option ng-repeat="hub in hubs" value="{{hub.id}}">{{hub.area}}</option>
+                            </select>
+                        </div>
+                    </div>
+                <footer>
+                    <div class="form-group">
+                        <div class="col-md-1 col-md-offset-7 ">
+                            <button type="submit" class="btn btn-success" ng-disabled="storesForm.$invalid" ng-click="submitStoreData()" >
+                                <span class="glyphicon glyphicon-saved"></span> Submit
+                            </button>
+                        </div>
+                    </div>
+                </footer>
+            </fieldset>
+        </form>
+    </div>
+</div>
+<br>
+<br>

@@ -1,0 +1,87 @@
+
+<div class="container rounded col-md-12 col-xs-12 custom-container">
+    <div class="row">
+        <div class="col-md-6 col-xs-6">
+            <div class="panel panel-primary">
+                <div class="panel-heading"><strong>Εργαζόμενος Μαγαζιού</strong></div>
+                <div class="panel-body" id="scroll">
+                    <table class="table table-hover" id="store_empl_table">
+                        <thead>
+                        <tr>
+                            <th ng-click="sortTable(0,'store_empl_table')" class="clickable">Όνομα
+                            <i class="glyphicon glyphicon-sort"></i>
+                            </th>
+                            <th ng-click="sortTable(1,'store_empl_table')" class="clickable">Επώνυμο
+                            <i class="glyphicon glyphicon-sort"></i>
+                            </th>
+                            <th ng-click="sortTable(2,'store_empl_table')" class="clickable">Κατάστημα
+                            <i class="glyphicon glyphicon-sort"></i>
+                            </th>
+                            <th>Ενέργειες</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="store_employee in stores_employees">
+                            <td>{{store_employee.firstname}}</td>
+                            <td>{{store_employee.lastname}}</td>
+                            <td>{{store_employee.store_name}}</td>
+                            <td>
+                                <button class="btn btn-info edit btn-xs" ng-click="editEmployee($index,1)">
+                                    <span class="glyphicon glyphicon-pencil small-gl"></span>
+                                </button>
+                                <button class="btn btn-danger delete btn-xs" ng-click="delete_store_Employee($index,store_employee)">
+                                    <span class="glyphicon glyphicon-trash small-gl"></span>
+                                </button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <button type="button"  href="#/employee_form" class="btn btn-success btn-block" ng-click="editEmployee(-1,1)">Προσθήκη νέου υπαλλήλου
+                <i class="  glyphicon glyphicon-plus-sign"></i>
+            </button>
+        </div>
+        <div class="col-md-6 col-xs-6">
+            <div class="panel panel-primary">
+                <div class="panel-heading"><strong>Εργαζόμενος Transit-Hub</strong></div>
+                <div class="panel-body" id="scroll">
+                    <table class="table table-fixed" id="hub_empl_table">
+                        <thead>
+                        <tr>
+                            <th ng-click="sortTable(0,'hub_empl_table')" class="clickable">Όνομα
+                            <i class="glyphicon glyphicon-sort"></i>
+                            </th>
+                            <th ng-click="sortTable(1,'hub_empl_table')" class="clickable">Επώνυμο
+                            <i class="glyphicon glyphicon-sort"></i>
+                            </th>
+                            <th ng-click="sortTable(2,'hub_empl_table')" class="clickable">Transit Hub
+                            <i class="glyphicon glyphicon-sort"></i>
+                            </th>
+                            <th>Ενέργειες</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="hub_employee in hubs_employees">
+                            <td>{{hub_employee.firstname}}</td>
+                            <td>{{hub_employee.lastname}}</td>
+                            <td>{{hub_employee.store_name}}</td>
+                            <td>
+                                <button class="btn btn-info edit btn-xs" ng-click="editEmployee($index,2)">
+                                    <span class="glyphicon glyphicon-pencil small-gl"></span>
+                                </button>
+                                <button class="btn btn-danger delete btn-xs" ng-click="delete_hub_Employee($index,hub_employee)">
+                                    <span class="glyphicon glyphicon-trash small-gl"></span>
+                                </button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <button type="button"  href="#/employee_form" class="btn btn-success btn-block" ng-click="editEmployee(-1,2)">Προσθήκη νέου υπαλλήλου
+                <i class="  glyphicon glyphicon-plus-sign"></i>
+            </button>
+        </div>
+    </div>
+</div>

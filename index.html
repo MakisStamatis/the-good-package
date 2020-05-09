@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html ng-app="courier_web_app" ng-controller="main_controller" ng-init="init()" >
+		<head>
+            <title> Το καλό δέμα </title>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <meta charset="UTF-8">
+
+            <link rel="stylesheet" href="css/bootstrap.css">
+            <link rel="stylesheet" href="css/ngProgress.css">
+            <link rel="stylesheet" type="text/css" href="css/sweetalert.css">
+            <link rel="stylesheet" type="text/css" href="css/index.css">
+            <script src="js/libraries/jquery.min.js"></script>
+            <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>
+            <script>
+                $(window).load(function() {
+                    $(".se-pre-con").fadeOut("slow");
+                });
+            </script>
+        </head>
+		<body>
+
+            <div class="se-pre-con"></div>
+
+            <!--Μain navigation bar-->
+            <nav class="navbar navbar-default navbar-fixed-top">
+                <div class="container">
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="#/dashboard"> </a>
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span> 
+                        </button>
+                    </div>
+                    <div class="collapse navbar-collapse" id="myNavbar">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a href="#/package" data-toggle="collapse" data-target=".navbar-collapse.in">Παρακολούθηση Aποστολής</a></li>
+                            <li><a href="#/network" data-toggle="collapse" data-target=".navbar-collapse.in">Το Δίκτυο μας </a></li>
+                            <li class="dropdown"ng-show="userType == 'admin'">
+                                <a class="dropdown-toggle" data-toggle="dropdown">Διαχείρηση
+                                    <span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li ng-show="userType == 'admin'"><a href="#/stores" data-toggle="collapse" data-target=".navbar-collapse.in">Καταστήματα </a></li>
+                                    <li ng-show="userType == 'admin'"><a href="#/employees" data-toggle="collapse" data-target=".navbar-collapse.in">Υπάληλοι </a></li>
+                                </ul>
+                            </li>
+                            <li ng-show="userType == 'store_empl'"><a href="#/new_package" data-toggle="collapse" data-target=".navbar-collapse.in">Nέα Aποστολή</a></li>
+                            <li ng-show="userType == 'hub_empl'"><a href="#/scan_package" data-toggle="collapse" data-target=".navbar-collapse.in">Σάρωση Δέματος</a></li>
+                            <li ng-show="!isLogged"><a href="" data-toggle="modal" data-target="#login_modal" ><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                            <li ng-show="isLogged"><a href="" ng-click="logout()" data-toggle="collapse" data-target=".navbar-collapse.in"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <div id="login_modal" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+                    <form>
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">Είσοδος Eργαζομένων</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <label class="control-label" for="username">Username:</label>
+                                    <input type="text" class="form-control" id="username" pattern="[A-Za-z0-9]+"
+                                           placeholder="Enter username" ng-model="my_login_form.username"
+                                           title="Username can contain only lowercase or upercase letters and digits" required>
+
+                                    <label class="control-label" for="pwd">Password:</label>
+                                    <input type="password" class="form-control" id="pwd" placeholder="Enter password" ng-model="my_login_form.password" required>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-default" ng-click="login()" >
+                                        <span class="glyphicon glyphicon-log-in"></span> Log In
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!--Ηere is going to be displayed each partial view-->                
+            <div ng-view></div>
+            <div id="footer">
+                <p id="foot">Συνδεδεμένος ως <strong> {{footerWord}}    {{name}} {{storeName}}</strong></p>
+            </div>
+
+            <script src="js/libraries/angular.min.js"></script>
+            <script src="js/libraries/bootstrap.min.js"></script>
+            <script type="text/javascript" src="js/app.js"></script>
+            <script type="text/javascript" src="js/config.js"></script>
+            <script type="text/javascript" src="js/services.js"></script>
+            <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDyrZScmKPzSgI3aOhEk9kXx1ApYVjyJWM"></script>
+            <script src="js/libraries/ng-map.min.js"></script>
+            <script src="js/libraries/ngprogress.min.js"></script>
+            <script src="js/libraries/angular-route.min.js"></script>
+            <script src="js/libraries/qrcode.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/bootstrap-select.min.js"></script>
+            <script type="text/javascript" src="js/libraries/llqrcode.js"></script>
+            <script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
+            <script type="text/javascript" src="js/libraries/instascan.min.js"></script>
+            <script src="js/libraries/sweetalert.min.js"></script>
+
+        </body>
+</html>		
